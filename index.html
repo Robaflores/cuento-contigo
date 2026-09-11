@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuenta Conmigo — Acompañamiento en tus gestiones digitales</title>
+<meta name="description" content="Cuenta Conmigo acompaña a las personas mayores en España en sus gestiones digitales esenciales: banca, sanidad y Seguridad Social. Sin cursos interminables, sin prisas.">
+
+<!-- Tipografías: Fraunces para titulares (calidez, trazo humano) y Work Sans para el texto (máxima legibilidad) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- TailwindCSS vía CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper:  '#FBF8F2',
+          ink:    '#24302A',
+          teal:   '#2F5D50',
+          tealdk: '#20453B',
+          ochre:  '#C9762E',
+          sand:   '#EFE7D3',
+          line:   '#D9D0B8',
+        },
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans:  ['"Work Sans"', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  /* Ajustes finos que Tailwind por CDN no cubre bien por sí solo */
+  html { scroll-behavior: smooth; }
+  body { font-size: 18px; } /* base algo mayor de lo habitual: pensado para leerse bien */
+  .step-line::before{
+    content:"";
+    position:absolute;
+    left:27px;
+    top:64px;
+    bottom:-8px;
+    width:2px;
+    background:#D9D0B8;
+  }
+  .step-line:last-child::before{ display:none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  .fade-in-hero {
+    animation: heroIn 900ms ease-out both;
+  }
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* foco visible y accesible para navegación por teclado */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 3px solid #C9762E;
+    outline-offset: 2px;
+  }
+</style>
+</head>
+
+<body class="bg-paper text-ink font-sans antialiased leading-relaxed">
+
+  <!-- ======================= HEADER ======================= -->
+  <header class="border-b border-line">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="#inicio" class="font-serif text-2xl font-semibold text-teal">Cuenta Conmigo</a>
+      <nav class="hidden md:flex items-center gap-8 text-[15px]">
+        <a href="#problema" class="hover:text-teal">El problema</a>
+        <a href="#personas" class="hover:text-teal">Para quién es</a>
+        <a href="#como-funciona" class="hover:text-teal">Cómo funciona</a>
+        <a href="#contacto" class="px-5 py-2.5 rounded-full bg-teal text-white hover:bg-tealdk transition-colors">Apúntate</a>
+      </nav>
+      <a href="#contacto" class="md:hidden px-4 py-2 rounded-full bg-teal text-white text-sm">Apúntate</a>
+    </div>
+  </header>
+
+  <!-- ======================= HERO ======================= -->
+  <section id="inicio" class="bg-paper">
+    <div class="max-w-6xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+      <div class="fade-in-hero">
+        <p class="text-ochre font-medium mb-4">Un proyecto para las gestiones que de verdad importan</p>
+        <h1 class="font-serif text-4xl md:text-5xl leading-tight font-semibold mb-6">
+          Que la tecnología no decida quién se queda fuera
+        </h1>
+        <p class="text-lg text-ink/80 mb-8 max-w-md">
+          Cuenta Conmigo acompaña a las personas mayores en las gestiones digitales que más les cuestan
+          — el banco, la cita médica, la Seguridad Social — con la calma y la paciencia que no siempre
+          encuentran en casa.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contacto" class="px-7 py-3.5 rounded-full bg-ochre text-white font-medium hover:bg-[#B3671F] transition-colors">
+            Quiero apuntarme al piloto
+          </a>
+          <a href="#como-funciona" class="px-7 py-3.5 rounded-full border border-ink/20 text-ink font-medium hover:border-ink/50 transition-colors">
+            Ver cómo funciona
+          </a>
+        </div>
+      </div>
+      <div class="fade-in-hero" style="animation-delay:120ms">
+        <img src="rosario-hero.avif"
+             alt="Rosario, una mujer mayor sonriendo mientras mira la pantalla de su móvil en la mesa de su cocina"
+             class="rounded-3xl w-full h-[440px] md:h-[520px] object-cover shadow-xl shadow-ink/10">
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= EL PROBLEMA ======================= -->
+  <section id="problema" class="bg-teal text-paper">
+    <div class="max-w-4xl mx-auto px-6 py-20 md:py-24">
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-8">
+        No es un problema de capacidad. Es un problema de acompañamiento.
+      </h2>
+      <p class="text-lg text-paper/85 mb-6 max-w-2xl">
+        Más de un 28% de los mayores de 65 años en España no usa internet, y una parte importante de
+        quienes sí lo usan no consiguen hacer solos sus gestiones más básicas: pedir una cita médica,
+        hacer una transferencia, tramitar un papel de la Seguridad Social.
+      </p>
+      <p class="text-lg text-paper/85 max-w-2xl">
+        No es que no puedan aprender. Es que casi nunca encuentran a alguien con la paciencia suficiente
+        para explicárselo a su ritmo — y sin sentirse juzgados por preguntar.
+      </p>
+      <blockquote class="mt-10 border-l-4 border-ochre pl-6 font-serif text-2xl md:text-3xl italic text-paper max-w-2xl">
+        "Sacar una cita en el médico o hacer una transferencia es una pesadilla. Nos sentimos analfabetos
+        en nuestro propio día a día."
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ======================= PARA QUIÉN ES ======================= -->
+  <section id="personas" class="bg-paper">
+    <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
+      <div class="max-w-xl mb-16">
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-4">Para quién es esto</h2>
+        <p class="text-ink/75 text-lg">
+          No todo el mundo llega al mismo sitio con el mismo problema. Así son algunas de las personas
+          en las que pensamos al diseñar Cuenta Conmigo.
+        </p>
+      </div>
+
+      <div class="space-y-16 md:space-y-24">
+
+        <!-- Rosario -->
+        <div class="flex flex-col md:flex-row items-center gap-10">
+          <img src="rosario.png" alt="Rosario Vidal sonriendo con su móvil en la mano"
+               class="w-full md:w-72 h-72 object-cover rounded-2xl shadow-lg shadow-ink/10 shrink-0">
+          <div>
+            <p class="text-ochre font-medium mb-1">Rosario Vidal, 84 años</p>
+            <h3 class="font-serif text-2xl font-semibold mb-3">La que quiere aprender, a su ritmo</h3>
+            <p class="text-ink/75 max-w-lg">
+              Aprendió a usar el móvil para no perderse ni una videollamada con su nieto. Solo necesita
+              que se lo expliquen las veces que hagan falta, sin prisa y sin sentir que va un curso por
+              detrás de los demás.
+            </p>
+          </div>
+        </div>
+
+        <!-- Amparo -->
+        <div class="flex flex-col md:flex-row-reverse items-center gap-10">
+          <img src="amparo.png" alt="Amparo Ruiz con los brazos cruzados frente a una sucursal bancaria cerrada"
+               class="w-full md:w-72 h-72 object-cover rounded-2xl shadow-lg shadow-ink/10 shrink-0">
+          <div>
+            <p class="text-ochre font-medium mb-1">Amparo Ruiz, 67 años</p>
+            <h3 class="font-serif text-2xl font-semibold mb-3">La que solo quiere resolver lo suyo</h3>
+            <p class="text-ink/75 max-w-lg">
+              Su sucursal cerró y ahora todo se hace desde el móvil. No le interesa un curso general de
+              tecnología: quiere resolver sola sus tres o cuatro gestiones de siempre, sin depender de
+              nadie ni sentirse juzgada por preguntar.
+            </p>
+          </div>
+        </div>
+
+        <!-- Manuel -->
+        <div class="flex flex-col md:flex-row items-center gap-10">
+          <img src="manuel.png" alt="Manuel Ortega mirando con desconfianza la pantalla de su móvil"
+               class="w-full md:w-72 h-72 object-cover rounded-2xl shadow-lg shadow-ink/10 shrink-0">
+          <div>
+            <p class="text-ochre font-medium mb-1">Manuel Ortega, 71 años</p>
+            <h3 class="font-serif text-2xl font-semibold mb-3">El que ya pasó un buen susto</h3>
+            <p class="text-ink/75 max-w-lg">
+              Estuvo a punto de caer en una estafa telefónica y desde entonces desconfía de cualquier
+              gestión digital, aunque la necesite. Antes que un tutorial, lo que pide es alguien de
+              confianza a quien preguntar "¿esto es real?"
+            </p>
+          </div>
+        </div>
+
+        <!-- Ricardo -->
+        <div class="flex flex-col md:flex-row-reverse items-center gap-10">
+          <img src="ricardo.png" alt="Ricardo Beltrán sentado y pensativo junto a una mesa, con el móvil boca abajo sin usar"
+               class="w-full md:w-72 h-72 object-cover rounded-2xl shadow-lg shadow-ink/10 shrink-0">
+          <div>
+            <p class="text-ochre font-medium mb-1">Ricardo Beltrán, 73 años</p>
+            <h3 class="font-serif text-2xl font-semibold mb-3">El que dice que esto no es para él</h3>
+            <p class="text-ink/75 max-w-lg">
+              Nunca pide ayuda ni se apunta a nada. No es que no le interese la tecnología — es que
+              teme no estar a la altura, y prefiere no intentarlo antes que arriesgarse a fallar delante
+              de alguien. Puede que sea quien más lo necesita.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CÓMO FUNCIONA ======================= -->
+  <section id="como-funciona" class="bg-sand">
+    <div class="max-w-4xl mx-auto px-6 py-20 md:py-24">
+      <div class="max-w-xl mb-16">
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-4">Cómo funciona</h2>
+        <p class="text-ink/75 text-lg">Tres pasos, pensados para que nada dependa de tener que atreverse solo.</p>
+      </div>
+
+      <div class="space-y-14">
+
+        <div class="relative pl-20 step-line">
+          <div class="absolute left-0 top-0 w-14 h-14 rounded-full bg-teal text-paper flex items-center justify-center font-serif text-xl font-semibold">1</div>
+          <h3 class="font-serif text-xl font-semibold mb-2">Tu guía, solo de lo tuyo</h3>
+          <p class="text-ink/75 max-w-xl">
+            Nada de cursos genéricos. Fichas claras, con capturas reales de tus propias aplicaciones,
+            para las 3 o 4 gestiones que de verdad repites — banca, cita médica, Seguridad Social.
+          </p>
+        </div>
+
+        <div class="relative pl-20 step-line">
+          <div class="absolute left-0 top-0 w-14 h-14 rounded-full bg-teal text-paper flex items-center justify-center font-serif text-xl font-semibold">2</div>
+          <h3 class="font-serif text-xl font-semibold mb-2">Si hace falta, alguien lo hace contigo</h3>
+          <p class="text-ink/75 max-w-xl">
+            Para lo urgente, o para lo que simplemente da más miedo, una persona de confianza puede
+            ejecutar la gestión en tu nombre — con un límite claro y tu autorización explícita en el momento.
+          </p>
+        </div>
+
+        <div class="relative pl-20">
+          <div class="absolute left-0 top-0 w-14 h-14 rounded-full bg-teal text-paper flex items-center justify-center font-serif text-xl font-semibold">3</div>
+          <h3 class="font-serif text-xl font-semibold mb-2">Cuando lo consigues, ayudas al siguiente</h3>
+          <p class="text-ink/75 max-w-xl">
+            Grabas en menos de un minuto cómo lo lograste, y ese mismo audio le llega directamente a la
+            próxima persona con tu misma duda. Sin cámaras, sin exámenes — solo tu voz ayudando a otra.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= POR QUÉ ES DIFERENTE ======================= -->
+  <section class="bg-paper">
+    <div class="max-w-4xl mx-auto px-6 py-20 md:py-24 text-center">
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-6">Lo que nos hace diferentes</h2>
+      <p class="text-lg text-ink/75 max-w-2xl mx-auto">
+        No pretendemos reinventar la formación digital para mayores — ya hay buenos programas haciendo
+        esa labor. Añadimos lo que casi siempre falta: ayuda humana real cuando el momento aprieta,
+        límites de confianza claros para lo delicado, y contenido hecho por quienes ya han pasado por
+        exactamente la misma duda.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= CONTACTO ======================= -->
+  <section id="contacto" class="bg-teal text-paper">
+    <div class="max-w-3xl mx-auto px-6 py-20 md:py-24">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-4">Hablemos</h2>
+        <p class="text-paper/85 text-lg max-w-xl mx-auto">
+          Ya seas tú quien quiere apuntarse, un familiar, o una entidad interesada en el proyecto,
+          cuéntanos brevemente tu situación y te contestamos personalmente.
+        </p>
+      </div>
+
+      <form id="formulario-contacto" class="bg-paper text-ink rounded-3xl p-8 md:p-10 shadow-xl shadow-ink/20">
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="nombre" class="block font-medium mb-2">Nombre y apellidos</label>
+            <input type="text" id="nombre" name="nombre" required
+                   class="w-full rounded-xl border border-line px-4 py-3 bg-white focus:border-teal outline-none">
+          </div>
+          <div>
+            <label for="email" class="block font-medium mb-2">Correo electrónico</label>
+            <input type="email" id="email" name="email" required
+                   class="w-full rounded-xl border border-line px-4 py-3 bg-white focus:border-teal outline-none">
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="telefono" class="block font-medium mb-2">Teléfono <span class="text-ink/50 font-normal">(opcional)</span></label>
+            <input type="tel" id="telefono" name="telefono"
+                   class="w-full rounded-xl border border-line px-4 py-3 bg-white focus:border-teal outline-none">
+          </div>
+          <div>
+            <label for="perfil" class="block font-medium mb-2">¿Quién eres?</label>
+            <select id="perfil" name="perfil" required
+                    class="w-full rounded-xl border border-line px-4 py-3 bg-white focus:border-teal outline-none">
+              <option value="">Selecciona una opción</option>
+              <option value="Soy la persona mayor interesada">Soy la persona mayor interesada</option>
+              <option value="Soy familiar o cuidador/a">Soy familiar o cuidador/a</option>
+              <option value="Represento una entidad o institución">Represento una entidad o institución</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <label for="mensaje" class="block font-medium mb-2">Cuéntanos brevemente tu situación</label>
+          <textarea id="mensaje" name="mensaje" rows="4" required
+                    class="w-full rounded-xl border border-line px-4 py-3 bg-white focus:border-teal outline-none"></textarea>
+        </div>
+
+        <button type="submit"
+                class="w-full md:w-auto px-8 py-3.5 rounded-full bg-ochre text-white font-medium hover:bg-[#B3671F] transition-colors">
+          Enviar
+        </button>
+
+        <p id="mensaje-envio" class="mt-4 text-sm text-ink/70 hidden"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="bg-ink text-paper/70">
+    <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+      <p class="font-serif text-lg text-paper">Cuenta Conmigo</p>
+      <p>Proyecto piloto · Contacto: <a href="mailto:garciaenriquegarcia@gmail.com" class="underline hover:text-paper">garciaenriquegarcia@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <!-- ======================= LÓGICA DEL FORMULARIO ======================= -->
+  <script>
+    // Este formulario NO tiene un servidor propio detrás (no se ha proporcionado
+    // un endpoint real). Para que funcione igualmente sin necesidad de programar
+    // un backend, al enviar el formulario se abre el programa de correo del
+    // visitante (Gmail, Outlook, Mail, etc.) con un mensaje ya redactado y
+    // dirigido a garciaenriquegarcia@gmail.com. La persona solo tiene que
+    // pulsar "Enviar" en su propio correo.
+    //
+    // Si en el futuro tienes un servicio de formularios real (por ejemplo
+    // Formspree, o un backend propio), basta con cambiar esta función por un
+    // fetch() a esa URL.
+
+    const CORREO_DESTINO = "garciaenriquegarcia@gmail.com";
+
+    document.getElementById('formulario-contacto').addEventListener('submit', function (evento) {
+      evento.preventDefault();
+
+      const nombre   = document.getElementById('nombre').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const telefono = document.getElementById('telefono').value.trim();
+      const perfil   = document.getElementById('perfil').value;
+      const mensaje  = document.getElementById('mensaje').value.trim();
+
+      const asunto = encodeURIComponent(`Cuenta Conmigo — nuevo contacto de ${nombre}`);
+      const cuerpo = encodeURIComponent(
+`Nombre: ${nombre}
+Correo: ${email}
+Teléfono: ${telefono || '(no indicado)'}
+Perfil: ${perfil}
+
+Mensaje:
+${mensaje}`
+      );
+
+      window.location.href = `mailto:${CORREO_DESTINO}?subject=${asunto}&body=${cuerpo}`;
+
+      const aviso = document.getElementById('mensaje-envio');
+      aviso.textContent = "Se está abriendo tu programa de correo con el mensaje ya redactado. Solo tienes que pulsar enviar allí.";
+      aviso.classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>
